@@ -9,9 +9,28 @@ class SplashScr extends StatefulWidget {
 
 class _SplashScrState extends State<SplashScr> {
   @override
+  String str = "Preparando todo";
+  void updateText(String s) {
+    setState(() {
+      str = s;
+    });
+  }
+
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 5), () => Navigator.pushNamed(context, "/home"));
+
+    Future.delayed(
+      Duration(seconds: 3),
+      () => updateText("Cargando Información"),
+    );
+    Future.delayed(
+      Duration(seconds: 3),
+      () => updateText("Listo"),
+    );
+    Future.delayed(
+      Duration(seconds: 3),
+      () => Navigator.pushNamed(context, "/home"),
+    );
   }
 
   @override
@@ -48,7 +67,7 @@ class _SplashScrState extends State<SplashScr> {
                 padding: EdgeInsets.only(top: 10),
               ),
               Text(
-                "Preparando Todo",
+                "$str",
                 style: TextStyle(color: Colors.white, fontSize: 20),
               ),
               Padding(
